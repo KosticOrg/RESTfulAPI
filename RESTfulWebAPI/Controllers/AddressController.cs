@@ -152,6 +152,10 @@ namespace RESTfulWebAPI.Controllers
             {
                 await database.SaveChangesAsync();
             }
+            catch (NullReferenceException e)
+            {
+                return StatusCode(500,new { Error = e.Message });
+            }
             catch (Exception e)
             {
                 return StatusCode(500,new { Error = e.Message });

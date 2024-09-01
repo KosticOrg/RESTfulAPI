@@ -24,6 +24,9 @@ jobs:
     - name: Test
       run: dotnet test --verbosity normal --no-build
 
+    - name: List files in the Workspace                
+      run: ls ${{ github.workspace }}    
+
     - name: Run Snyk to check for vulnerabilities
       uses: snyk/actions/dotnet@master
       continue-on-error: true # To make sure that SARIF upload gets called

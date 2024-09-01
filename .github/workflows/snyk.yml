@@ -33,7 +33,7 @@ jobs:
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
-        args: --sarif-file-output=snyk.sarif --file=${{github.workspace}}/RESTfulAPI.sln --severity-threshold=medium    
+        args: --sarif-file-output=snyk.sarif --file=${{github.workspace}}/RESTfulWebAPI.sln --severity-threshold=medium    
 
     - name: Upload result to GitHub Code Scanning
       uses: github/codeql-action/upload-sarif@v2

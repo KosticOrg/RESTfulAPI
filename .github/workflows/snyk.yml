@@ -1,8 +1,6 @@
-name: "Build and scan project with Snyk"
+name: Snyk
 
-on:
-  push:
-    branches: [ main ]
+on:  
   workflow_dispatch:  
 
 jobs:
@@ -34,7 +32,10 @@ jobs:
       with:
         args: --sarif-file-output=snyk.sarif --file=${{github.workspace}}/RESTfulWebAPI.sln --severity-threshold=medium
 
+    - name: List files in the Workspace                
+      run: ls -R ${{ github.workspace }}      
+
     - name: Upload result to GitHub Code Scanning
-      uses: github/codeql-action/upload-sarif@v1
+      uses: github/codeql-action/upload-sarif@v2
       with:
         sarif_file: snyk.sarif

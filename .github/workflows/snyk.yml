@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 5.0.x
         
@@ -33,9 +33,9 @@ jobs:
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
-        args: --sarif-file-output=snyk.sarif --file=${{github.workspace}}/RESTfulWebAPI.sln --severity-threshold=medium    
+        args: --sarif-file-output=snyk.sarif --file=RESTfulWebAPI.sln --severity-threshold=medium    
 
     - name: Upload result to GitHub Code Scanning
-      uses: github/codeql-action/upload-sarif@v2
+      uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: snyk.sarif

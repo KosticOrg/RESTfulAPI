@@ -19,7 +19,7 @@ namespace DataLayer.Models
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("Server=tcp:valtech.database.windows.net,1433;Initial Catalog=valtech;Persist Security Info=False;User ID=kostic;Password=Lupus`12345;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            //optionsBuilder.UseSqlServer("Server=tcp:xxxx.database.windows.net,1433;Initial Catalog=xxxx;Persist Security Info=False;User ID=xxxx;Password=xxxxxx;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Student> Students { get; set; }

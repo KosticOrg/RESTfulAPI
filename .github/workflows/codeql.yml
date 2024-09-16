@@ -8,6 +8,10 @@ name: "CodeQL"
 
 on:
   workflow_dispatch:
+
+env:                                          
+  PROJECT_NAME: RESTfulWebAPI   
+  DOTNET_VERSION: '5'                 
     
 jobs:
   analyze:
@@ -26,7 +30,7 @@ jobs:
       matrix:
         include:
         - language: csharp
-          build-mode: autobuild      
+          build-mode: manual      
         
     steps:
     - name: Checkout Repository
@@ -38,6 +42,20 @@ jobs:
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
         queries: security-extended,security-and-quality
+
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v4                     
+      with:                                             
+        dotnet-version: ${{ env.DOTNET_VERSION }}         
+
+    - name: Restore Dependencies                                                                    
+      run: dotnet restore ${{github.workspace}}/${{env.PROJECT_NAME}}/${{env.PROJECT_NAME}}.csproj       
+
+    - name: Build the Project                                                                                            
+      run: dotnet build ${{github.workspace}}/${{env.PROJECT_NAME}}/${{env.PROJECT_NAME}}.csproj -c Release --no-restore   
+
+    - name: Publish the Project                                                                                                              
+      run: dotnet publish ${{github.workspace}}/${{env.PROJECT_NAME}}/${{env.PROJECT_NAME}}.csproj -c Release -o ./dotnetcorewebapi   
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3

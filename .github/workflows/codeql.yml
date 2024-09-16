@@ -21,6 +21,7 @@ jobs:
       #contents: read
 
     strategy:
+      # If we scan multiple languages, continue to scan if one of them fails
       fail-fast: false
       matrix:
         include:

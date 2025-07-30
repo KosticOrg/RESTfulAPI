@@ -42,6 +42,8 @@ jobs:
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
         queries: security-extended,security-and-quality
+        # To use some custom queries or extended query suites
+        #config-file: .github/workflows/codeql/codeql‑config.yml
 
     - name: Set up .NET Core
       uses: actions/setup-dotnet@v4                     

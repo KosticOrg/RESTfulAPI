@@ -1,5 +1,4 @@
 # List out what we want each issue to have from the templates
-# If someone opens an issue and removes the title section, this app will comment and then close it out
 # It helps validate the content that is provided in our issues
 # Make sure that what we have in this config file matches what we have in our templates
 
@@ -8,15 +7,16 @@ comment: "This issue is closed because it does not meet our issue template. Plea
 issueConfigs:
 # There can be several configs for different kind of issues.
 - content:
-# Example 1: bug report
+# Example 1: Bug Report
   - "Expected Behavior"
   - "Current Behavior"
   - "Steps to Reproduce"
   - "Detailed Description"
 - content:
-# Example 2: feature request
+# Example 2: Feature Request
   - "Motivation / Use Case"
   - "Expected Behavior"
   - "Other Information"
+  
 # The issue is judged to be legal if it includes all keywords from any of these two configs.
 # Or it will be closed by the app.
